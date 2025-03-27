@@ -125,7 +125,7 @@ namespace Assignment1
 
         // throw new System.NotImplementedException("ToolCollection.IsEmpty() not implemented");
         // t(n) = O(1)
-        public bool IsEmpty()
+        public bool IsEmpty()   
         {
             return Number == 0;
         }
@@ -141,7 +141,7 @@ namespace Assignment1
         //throw new System.NotImplementedException("ToolCollection.Search() not implemented");
         // t(n) = O(n)
 
-        // Maybe use a binary search or divide and conque
+        // USE BINARY SEARCH
         // Current Sequentail search
         public bool Search(ITool aTool)
         {

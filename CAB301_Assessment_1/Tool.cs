@@ -1,4 +1,6 @@
-﻿namespace Assignment1
+﻿using static System.Runtime.InteropServices.JavaScript.JSType;
+
+namespace Assignment1
 {
     public partial class Tool : ITool
     {
@@ -62,29 +64,81 @@
             mQuantity = quantity;
         }
 
+        // throw new System.NotImplementedException("Tool.IncreaseQuantity() not implemented");
+        // t(n) = O(1)
         public bool IncreaseQuantity(int num)
         {
-            throw new System.NotImplementedException("Tool.IncreaseQuantity() not implemented");
+            mQuantity += num;
+            return true;
         }
 
+        // throw new System.NotImplementedException("Tool.DecreaseQuantity() not implemented");
+        // t(n) = O(1)
         public bool DecreaseQuantity(int num)
         {
-            throw new System.NotImplementedException("Tool.DecreaseQuantity() not implemented");
+            if ((mQuantity+num) <= 0){ return false; }
+            mQuantity -= num;
+            return true;
         }
 
+        // throw new System.NotImplementedException("Tool.AddBorrower() not implemented");
+        // t(n) = O(n)
         public bool AddBorrower(string aBorrower)
         {
-            throw new System.NotImplementedException("Tool.AddBorrower() not implemented");
+            if (AvailableQuantity <= 0) { return false; }
+            string[] updatedBorrower = new string[mBorrowers.Length + 1];
+            for (int i = 0; i < mBorrowers.Length; i++)
+            {
+                if (mBorrowers[i] == aBorrower) { return false; }
+                updatedBorrower[i] = mBorrowers[i];
+            }
+            updatedBorrower[mBorrowers.Length] = aBorrower;
+            mBorrowers = updatedBorrower;
+            return true;
         }
 
+        // throw new System.NotImplementedException("Tool.DeleteBorrower() not implemented");
+        // IMPROVE
+        // t(n) = O(n)
         public bool DeleteBorrower(string aBorrower)
         {
-            throw new System.NotImplementedException("Tool.DeleteBorrower() not implemented");
+            int i = 0;
+            bool found = false;
+            string[] updatedBorrower = new string[mBorrowers.Length - 1];
+            for (; i < mBorrowers.Length; i++)
+            {
+                if (mBorrowers[i] == aBorrower)
+                {
+                    found = true;
+                    break; 
+                }
+                updatedBorrower[i] = mBorrowers[i];
+            }
+            if (found)
+            {
+                for (int j = i + 1; j < mBorrowers.Length; j++)
+                {
+                    updatedBorrower[j - 1] = mBorrowers[j];
+                }
+                mBorrowers = updatedBorrower;
+                return found;
+            }
+            else
+            {
+                return found;
+            }
         }
 
+        //throw new System.NotImplementedException("Tool.SearchBorrower() not implemented");
+        // REPLACE SEARCH METHOD
+        // t(n) = O(n)
         public bool SearchBorrower(string aBorrower)
         {
-            throw new System.NotImplementedException("Tool.SearchBorrower() not implemented");
+            for (int i = 0; i < mBorrowers.Length; i++)
+            {
+                if (mBorrowers[i] == aBorrower) { return true; }
+            }
+            return false;
         }
     }
 }

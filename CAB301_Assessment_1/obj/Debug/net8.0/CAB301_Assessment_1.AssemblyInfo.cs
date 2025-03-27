@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("CAB301_Assessment_1")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+1452937000699edc465b59c49e17327ce47bb3d7")]
 [assembly: System.Reflection.AssemblyProductAttribute("CAB301_Assessment_1")]
 [assembly: System.Reflection.AssemblyTitleAttribute("CAB301_Assessment_1")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

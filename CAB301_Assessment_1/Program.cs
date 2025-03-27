@@ -25,6 +25,19 @@ namespace Assignment1
             Console.WriteLine(collection.Search(tool2));
             collection.Add(tool);
             Console.WriteLine(collection.Search(tool));
+
+            tool.IncreaseQuantity(4);
+            tool.DecreaseQuantity(2);
+            tool4.IncreaseQuantity(40);
+            tool4.DecreaseQuantity(3);
+            tool.AddBorrower("James");
+            tool.AddBorrower("Kevin");
+            tool.AddBorrower("Dan");
+            tool4.AddBorrower("Ben");
+            Console.WriteLine(tool.SearchBorrower("James"));
+            tool.DeleteBorrower("James");
+            Console.WriteLine(tool.SearchBorrower("James"));
+            Console.WriteLine(tool4.SearchBorrower("Ben"));
         }
     }
 }
