@@ -68,6 +68,7 @@ namespace Assignment1
         // t(n) = O(1)
         public bool IncreaseQuantity(int num)
         {
+            if (num <= 0) { return false; }
             mQuantity += num;
             return true;
         }
@@ -76,7 +77,7 @@ namespace Assignment1
         // t(n) = O(1)
         public bool DecreaseQuantity(int num)
         {
-            if ((mQuantity+num) <= 0){ return false; }
+            if (((AvailableQuantity - num) <= 0 && mBorrowers.Length == 0) || ((AvailableQuantity - num) < 0 && mBorrowers.Length != 0) || num <= 0 ) { return false; }
             mQuantity -= num;
             return true;
         }
@@ -85,7 +86,7 @@ namespace Assignment1
         // t(n) = O(n)
         public bool AddBorrower(string aBorrower)
         {
-            if (AvailableQuantity <= 0) { return false; }
+            if (AvailableQuantity <= 0 || aBorrower == null) { return false; }
             string[] updatedBorrower = new string[mBorrowers.Length + 1];
             for (int i = 0; i < mBorrowers.Length; i++)
             {
@@ -102,21 +103,22 @@ namespace Assignment1
         // t(n) = O(n)
         public bool DeleteBorrower(string aBorrower)
         {
-            int i = 0;
+            int index = 0;
             bool found = false;
+            if (mBorrowers.Length == 0) { return found; }
             string[] updatedBorrower = new string[mBorrowers.Length - 1];
-            for (; i < mBorrowers.Length; i++)
+            for (; index < mBorrowers.Length; index++)
             {
-                if (mBorrowers[i] == aBorrower)
+                if (mBorrowers[index] == aBorrower)
                 {
                     found = true;
                     break; 
                 }
-                updatedBorrower[i] = mBorrowers[i];
             }
             if (found)
             {
-                for (int j = i + 1; j < mBorrowers.Length; j++)
+                for (int i = 0; i < index; i++) { updatedBorrower[i] = mBorrowers[i]; }
+                for (int j = index + 1; j < mBorrowers.Length; j++)
                 {
                     updatedBorrower[j - 1] = mBorrowers[j];
                 }
@@ -134,6 +136,7 @@ namespace Assignment1
         // t(n) = O(n)
         public bool SearchBorrower(string aBorrower)
         {
+            if (aBorrower == null) { return false; }
             for (int i = 0; i < mBorrowers.Length; i++)
             {
                 if (mBorrowers[i] == aBorrower) { return true; }

@@ -145,6 +145,7 @@ namespace Assignment1
         // Current Sequentail search
         public bool Search(ITool aTool)
         {
+            if (aTool == null) { return false; }
             for (int i = 0; i < Number; i++)
             {
                 if (aTool.Name == Tools[i].Name)
